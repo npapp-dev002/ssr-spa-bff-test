@@ -26,7 +26,8 @@
       "@repo/bff/router": ["apps/bff/src/api/routers/root.ts"],
       "@repo/bff/trpc": ["apps/bff/src/api/trpc.ts"]
     },
-    "baseUrl": "."
+    "baseUrl": ".",
+    "ignoreDeprecations": "5.0"
   },
   "exclude": ["node_modules", "tmp"]
 }
