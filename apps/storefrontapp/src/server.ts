@@ -5,7 +5,6 @@ import {
   defaultExpressErrorHandlers,
   defaultSsrOptimizationOptions,
   ngExpressEngine as engine,
-  getOriginValidationMiddleware,
 } from '@spartacus/setup/ssr';
 import express from 'express';
 import { readFileSync } from 'node:fs';
@@ -30,12 +29,6 @@ export function app(): express.Express {
   const indexHtmlContent = readFileSync(indexHtml, 'utf-8');
 
   server.set('trust proxy', 'loopback');
-
-  server.use(
-    getOriginValidationMiddleware({
-      allowedOrigins: process.env['SSR_ALLOWED_ORIGINS'],
-    })
-  );
 
   server.engine(
     'html',
