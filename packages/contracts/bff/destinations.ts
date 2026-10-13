@@ -1,3 +1,3 @@
 import { createDestinations } from '@vivaldi/config';
 
-export default createDestinations([]);
+export default createDestinations(['occ_v2']);

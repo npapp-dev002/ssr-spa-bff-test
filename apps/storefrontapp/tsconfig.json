@@ -13,7 +13,15 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2022",
-    "module": "preserve"
+    "module": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@repo/bff/clients": ["../../packages/clients/bff/index.ts"],
+      "@repo/bff/clients/*": ["../../packages/clients/bff/*.ts", "../../packages/clients/bff/*/index.ts"],
+      "@repo/bff/contracts": ["../../packages/contracts/bff/index.ts"],
+      "@repo/bff/router": ["../../apps/bff/src/api/routers/root.ts"],
+      "@repo/bff/trpc": ["../../apps/bff/src/api/trpc.ts"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

@@ -4,6 +4,7 @@
 declare global {
   interface VivaldiCustomEnv {
     FRONTEND_BASE_URL: string;
+    OCC_BASE_URL: string;
   }
 }
 export {};

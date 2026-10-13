@@ -32,6 +32,16 @@
       "options": {
         "targetName": "lint"
       }
+    },
+    {
+      "plugin": "@nx/angular/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "testTargetName": "test",
+        "extractI18nTargetName": "extract-i18n",
+        "serveStaticTargetName": "serve-static"
+      }
     }
   ],
   "tui": {

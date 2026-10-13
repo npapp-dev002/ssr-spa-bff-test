@@ -1,0 +1,85 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "storefrontapp",
+  "projectType": "application",
+  "sourceRoot": "apps/storefrontapp/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular/build:application",
+      "options": {
+        "outputPath": "dist/apps/storefrontapp",
+        "browser": "apps/storefrontapp/src/main.ts",
+        "server": "apps/storefrontapp/src/main.server.ts",
+        "ssr": {
+          "entry": "apps/storefrontapp/src/server.ts"
+        },
+        "prerender": false,
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/storefrontapp/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          { "glob": "**/*", "input": "apps/storefrontapp/public" },
+          {
+            "glob": "**/*",
+            "input": "node_modules/@spartacus/smartedit/assets",
+            "output": "assets/"
+          }
+        ],
+        "styles": [
+          "apps/storefrontapp/src/styles.scss",
+          "apps/storefrontapp/src/styles/spartacus/user.scss",
+          "apps/storefrontapp/src/styles/spartacus/cart.scss",
+          "apps/storefrontapp/src/styles/spartacus/order.scss",
+          "apps/storefrontapp/src/styles/spartacus/checkout.scss",
+          "apps/storefrontapp/src/styles/spartacus/storefinder.scss",
+          "apps/storefrontapp/src/styles/spartacus/asm.scss",
+          "apps/storefrontapp/src/styles/spartacus/product.scss"
+        ],
+        "stylePreprocessorOptions": {
+          "includePaths": ["node_modules/"],
+          "sass": { "silenceDeprecations": ["import"] }
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            { "type": "initial", "maximumWarning": "500kB", "maximumError": "3.5mb" },
+            { "type": "anyComponentStyle", "maximumWarning": "4kB", "maximumError": "8kB" }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@angular/build:dev-server",
+      "options": {
+        "buildTarget": "storefrontapp:build",
+        "proxyConfig": "apps/storefrontapp/proxy.conf.js"
+      },
+      "configurations": {
+        "production": { "buildTarget": "storefrontapp:build:production" },
+        "development": { "buildTarget": "storefrontapp:build:development" }
+      },
+      "defaultConfiguration": "development"
+    },
+    "test": {
+      "executor": "@angular/build:unit-test",
+      "options": {
+        "tsConfig": "apps/storefrontapp/tsconfig.spec.json"
+      },
+      "configurations": {
+        "test": {
+          "stylePreprocessorOptions": { "includePaths": ["node_modules/"] }
+        }
+      }
+    }
+  }
+}
