@@ -70,6 +70,13 @@
       },
       "defaultConfiguration": "development"
     },
+    "serve-ssr": {
+      "continuous": true,
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "concurrently -c \"green.bold,blue.bold\" --names \"build,serve\" \"npm run watch:storefrontapp\" \"npm run serve:ssr:watch:storefrontapp\""
+      }
+    },
     "test": {
       "executor": "@angular/build:unit-test",
       "options": {

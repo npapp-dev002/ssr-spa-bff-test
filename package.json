@@ -10,6 +10,10 @@
     "build:bff": "vivaldi build bff",
     "dev:bff": "vivaldi dev bff",
     "start:storefrontapp": "env-cmd -e dev -- nx serve storefrontapp",
+    "watch:storefrontapp": "env-cmd -e dev -- nx build storefrontapp --watch --configuration=development",
+    "serve:ssr:storefrontapp": "env-cmd -e dev -- node dist/apps/storefrontapp/server/server.mjs",
+    "serve:ssr:watch:storefrontapp": "env-cmd -e dev -- sh -c 'until [ -f dist/apps/storefrontapp/server/server.mjs ]; do sleep 1; done && node --watch-path=dist/apps/storefrontapp/server dist/apps/storefrontapp/server/server.mjs'",
+    "serve-ssr:storefrontapp": "env-cmd -e dev -- nx run storefrontapp:serve-ssr",
     "build:storefrontapp": "nx build storefrontapp",
     "test:storefrontapp": "nx test storefrontapp"
   },
@@ -95,6 +99,7 @@
     "@vivaldi/testing": "0.25.2",
     "@vivaldi/vitest": "0.25.2",
     "@vivaldi/vm": "0.25.2",
+    "concurrently": "^10.0.6",
     "env-cmd": "^11.0.0",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^10.0.0",

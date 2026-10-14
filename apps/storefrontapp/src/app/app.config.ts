@@ -13,6 +13,7 @@ import {
   withNoHttpTransferCache,
 } from '@angular/platform-browser';
 import { AppModule } from './app.module';
+import { bffExampleProviders } from './bff/examples/bff-example.providers';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -23,5 +24,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch(), withInterceptorsFromDi()),
     provideClientHydration(withEventReplay(), withNoHttpTransferCache()),
     importProvidersFrom(AppModule),
+    ...bffExampleProviders,
   ],
 };
